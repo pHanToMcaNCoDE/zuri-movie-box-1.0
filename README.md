@@ -1,3 +1,20 @@
+#About Project
+ A web application that allows users to view movie details. The TMDB API was consumed.
+ 
+# Requirements
+
+1. User Interface: A responsive and visually appealing user interface for the application. 
+2. Movie Details: View details of each movie.
+   
+# API Integration:
+Consume the TMDB API to fetch movie data.
+Use the following API endpoints:
+Fetch movie details by ID
+
+# Error Handling:
+Implemented error handling to display meaningful error messages to users in cases of API failures or other issues.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
