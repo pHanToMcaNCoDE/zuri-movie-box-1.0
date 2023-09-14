@@ -1,17 +1,14 @@
-import React, { useState } from 'react'
-// import React from 'react'
+import React from 'react'
 import logo from '../../assets/LogoTwo.png'
 import {GoHome} from 'react-icons/go'
 import {BiCameraMovie} from 'react-icons/bi'
 import {PiMonitorPlayDuotone} from 'react-icons/pi'
 import {SlCalender} from 'react-icons/sl'
 import {IoIosLogOut} from 'react-icons/io'
-import menu from '../../assets/menu.png'
 import { Link } from 'react-router-dom'
 
 const AsideBar = () => {
 
-const [nav, setNav] = useState(false)
 
   return (
     <div>

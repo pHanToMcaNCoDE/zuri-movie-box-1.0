@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 // import AsideBar from './Components/AsideBar/AsideBar';
 import Details from './Components/Details/Details';
+import ErrorPage from './Components/ErrorPage/ErrorPage';
 import Home from './Components/Home/Home';
 // import Nav from './Components/Nav/Nav';
 
@@ -14,6 +15,7 @@ function App() {
             <Route path='home' element={<Home/>}/>
             <Route path='/' element={<Navigate to='home' />} />
             <Route path='details/:id' element={<Details/>} />
+            <Route path='*' element={<ErrorPage/>} />
           </Route>
         </Routes>
       </BrowserRouter>

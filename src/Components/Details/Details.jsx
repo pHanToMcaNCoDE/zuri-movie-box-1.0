@@ -9,11 +9,13 @@ import {GiTicket} from 'react-icons/gi'
 import {AiOutlineUnorderedList} from 'react-icons/ai'
 import ads from '../../assets/ads.png'
 import Nav from '../Nav/Nav'
+import {IoIosArrowDown} from 'react-icons/io'
 
 const Details = () => {
     const params = useParams();
     const [loading, setLoading] = useState(true); 
     const [movieDetails, setMovieDetails] = useState({});
+    const [movieVideos, setMovieVideos] = useState(null);
 
     const fetchMovieDetails = async () => {
         try {
@@ -26,16 +28,31 @@ const Details = () => {
         }
     }
 
+    const fetchMovieTrailers = async () => {
+        try {
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=d10f94cdd313f423da01119ecf2659bb`);
+            setMovieVideos(response.data);
+            // setLoading(false); 
+        } catch (e) {
+            console.log(e);
+            // setLoading(false); 
+        }
+    }
+
     console.log(movieDetails)
-       
+    // console.log(movieVideos)
+  
 
     useEffect(() => {
         fetchMovieDetails();
+        fetchMovieTrailers();
     }, [params.id]);
 
-    const baseUrl = 'https://image.tmdb.org/t/p/w500'; 
 
-    const imageUrl = `${baseUrl}${movieDetails.backdrop_path}`;
+
+    // const baseUrl = 'https://image.tmdb.org/t/p/w500'; 
+
+    // const imageUrl = `${baseUrl}${movieDetails.backdrop_path}`;
 
     return (
         <div>
@@ -51,14 +68,24 @@ const Details = () => {
                     </div>
                 ) : (
                     <div>
-                        <div className='h-[80vh] pr-[3%] py-[2%]'>
-                            <img preload="auto" className='md:w-[100vw] w-[100vw]  lg:w-[80vw] h-[440px] rounded-3xl object-cover' src={imageUrl || 'URL_TO_PLACEHOLDER_IMAGE'} alt={movieDetails.title}></img>
+                        <div className='h-[80vh] pr-[3%]'>
+                            {/* <img preload="auto" className='md:w-[100vw] w-[100vw]  lg:w-[80vw] h-[440px] rounded-3xl object-cover' src={imageUrl || 'URL_TO_PLACEHOLDER_IMAGE'} alt={movieDetails.title}></img> */}
+                            <iframe
+                                className='md:w-[95vw] w-[95vw] lg:w-[80vw] h-[440px] rounded-3xl object-cover'
+                                src={`https://www.youtube.com/embed/${movieVideos.key}`}
+                                title={movieDetails.title}
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                            ></iframe>
+                            
+                                
 
                             <div className='flex flex-col md:flex-row lg:flex-row justify-between items-center px-2 pb-2 pt-5'>
 
                                 <div className='flex flex-col md:flex-row text-center lg:text-justify lg:flex-row items-center'>
 
-                                    <h1 data-testid='movie-title' className='text-gray-900 text-[1.4rem] font-bold p-1'>{movieDetails.title}</h1>
+                                    <h1 data-testid='movie-title' className='text-gray-900 text-[1.2rem] lg:text-[1.4rem] font-bold p-1'>{movieDetails.title}</h1>
 
                                     <span className='text-gray-900 p-1'><GoDotFill size={12}/></span>
 
@@ -77,7 +104,7 @@ const Details = () => {
 
                         <div className='flex flex-col lg:flex-row justify-between items-center'>
                             {/* Left */}
-                            <div className='w-[100%] lg:w-[60%] mb-8 flex flex-col'>
+                            <div className='w-[100%] lg:w-[75%] mb-8 flex flex-col'>
 
                                 <div className='w-full py-0 px-2 text-justify'>
                                     <p data-testid='movie-overview' className='text-gray-900 text-[1.06rem]'>{movieDetails.overview}
@@ -89,31 +116,38 @@ const Details = () => {
                                     <p className='py-2 px-2'>Runtime: <span data-testid='movie-runtime' className='text-[#BE123C]'>{movieDetails.runtime}</span></p>
 
                                     <p className='py-2 px-2 flex items-center'>Release Date: 
-                                    <span data-testid='movie-release-date' className='text-[#BE123C] lg:text-[1.2rem] p-1'>{new Date(movieDetails.release_date).getTime()}</span></p>
+                                    <span data-testid='movie-release-date' className='text-[#BE123C] lg:text-[1.2rem] p-1'>
+                                        {new Date(movieDetails.release_date).getTime()}
+                                        </span></p>
 
                                     <p className='py-2 px-2'>Tagline: <span className='text-[#BE123C]'>{movieDetails.tagline}</span></p>
 
                                 </div>
-                                <div>
+                                <div className='flex items-center w-[90%] border border-gray-400 rounded-lg border-l-rose-700 relative'>
+                                    <button className='rounded-lg border border-rose-700 bg-rose-700 text-white px-8 py-2'>Top rated movie #65</button>
+                                    <div className=' ml-4 flex justify-between items-center'>
+                                        <p>Awards 9 nominations</p>
+                                        <IoIosArrowDown className='absolute mr-3 right-0 text-gray-500' size={27}/>
+                                    </div>
                                 </div>
                             </div>
 
                             {/* Right */}
 
-                            <div className='w-[100%] lg:w-[40%] mb-6'>
-                                <div className='flex flex-col items-center'>
+                            <div className='w-[100%] lg:w-[25%] mb-6 lg:mx-0'>
+                                <div className='md:flex lg:flex-col items-center mb-5 lg:mb-0'>
 
-                                    <button className='outline-none bg-[#BE123C] border border-[#BE123C] text-white py-2 px-[20%] rounded-lg flex items-center my-2'><GiTicket className='text-white mx-2' size={22}/>See Showtimes</button>
+                                    <button className='outline-none mx-6 lg:mx-0 bg-[#BE123C] border border-[#BE123C] text-white py-2 px-[10%] lg:px-[20%] rounded-lg flex items-center my-2'><GiTicket className='text-white mx-2' size={22}/>See Showtimes</button>
 
-                                    <button className='outline-none bg-rose-100 border border-[#BE123C] text-gray-900 py-2 px-[16%] rounded-lg flex items-center my-2'><AiOutlineUnorderedList className='mx-2' size={22}/>More watch options</button>
+                                    <button className='outline-none mx-6 lg:mx-0 bg-rose-100 border border-[#BE123C] text-gray-900 py-2 px-[8%] lg:px-[16%] rounded-lg flex items-center my-2'><AiOutlineUnorderedList className='mx-2' size={22}/>More watch options</button>
                                 </div>
                                 <div className='relative cursor-pointer duration-300 hover:scale-110'>
                                     <div>
-                                        <img className='mx-auto w-[75%] object-cover' src={ads} alt='Movie Advert'></img>
-                                    <div className='w-[75%] bg-black/70 text-white rounded-b-lg flex items-center absolute bottom-0 left-[12.5%] p-1'>
-                                        <AiOutlineUnorderedList className='mx-2' size={22}/>
-                                        <p className='text-white text-[.9rem] p-1'>The Best Movies and Shows in September</p>
-                                    </div>
+                                        <img className='mx-auto w-[60%] md:w-[100%] object-cover' src={ads} alt='Movie Advert'></img>
+                                        <div className='w-[60%] lg:w-[100%] bg-black/70 text-white rounded-b-lg flex items-center absolute bottom-0 left-[20%] lg:left-[0%] p-1'>
+                                            <AiOutlineUnorderedList className='mx-2' size={22}/>
+                                            <p className='text-white text-[.9rem] p-1'>The Best Movies and Shows in September</p>
+                                        </div>
                                     </div>
 
                                     

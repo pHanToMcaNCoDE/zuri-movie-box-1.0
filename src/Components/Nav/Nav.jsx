@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import menu from '../../assets/menu.png'
+import React from 'react'
+// import menu from '../../assets/menu.png'
 import logo from '../../assets/LogoTwo.png'
 import {GrHomeRounded} from 'react-icons/gr'
 import { Link } from 'react-router-dom'
 
 const Nav = () => {
 
-const [nav, setNav] = useState(false)
+// const [nav, setNav] = useState(false)
 
   return (
     <div>

@@ -1,12 +1,12 @@
 import React from 'react'
 import Navbar from '../Navbar/Navbar'
 import './home.css'
-import imdb from '../../assets/imdb.png'
-import apple from '../../assets/apple.png'
 import {AiFillPlayCircle} from 'react-icons/ai'
 import Footer from '../Footer/Footer'
 import Cards from '../Display/Display'
-import { ScaleLoader } from 'react-spinners'
+import {LiaVoteYeaSolid} from 'react-icons/lia'
+import {PiArrowsCounterClockwiseDuotone} from 'react-icons/pi'
+
 
 const Hero = () => {
 
@@ -15,7 +15,8 @@ const Hero = () => {
     <div className='hero max-w-[1440px] h-[650px]'>
         
       <Navbar/>
-        <div className='lg:w-[24%] my-[6%] mx-[6%] text-white'>
+      
+        <div className='my-[16%] lg:w-[24%] md:my-[6%]  lg:my-[6%] mx-[6%] text-white'>
             <div>
                 <h1 className='text-6xl font-semibold'>John Wick3:</h1>
                 <h1 className='text-6xl font-semibold py-3'>Parabellum</h1>
@@ -23,12 +24,12 @@ const Hero = () => {
 
             <div className='flex items-center py-4'>
                 <div className='flex items-center'>
-                    <img src={imdb} alt=''></img>
-                    <p className='px-3'>86.0/100</p>
+                    <LiaVoteYeaSolid className='text-gray-300' size={26}/>
+                    <p className='px-3'>8.6/10.0</p>
                 </div>
                 <div className='flex items-center px-10'>
-                    <img src={apple} alt=''></img>
-                    <p className='px-3'>97%</p>
+                    <PiArrowsCounterClockwiseDuotone className='text-gray-300' size={26}/>
+                    <p className='px-3'>9789</p>
                 </div>
             </div>
 

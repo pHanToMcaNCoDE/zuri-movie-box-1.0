@@ -13,7 +13,7 @@ const [loading, setLoading] = useState(false)
   const fetchMovies = async () => {
     try{
       const res = await axios
-      .get('https://api.themoviedb.org/3/discover/movie?api_key=d10f94cdd313f423da01119ecf2659bb')
+      .get('https://api.themoviedb.org/3/movie/top_rated?api_key=d10f94cdd313f423da01119ecf2659bb')
       setMovies(res.data.results)
       setLoading(true)
     }catch (e){

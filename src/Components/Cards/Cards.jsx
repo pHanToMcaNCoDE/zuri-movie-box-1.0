@@ -3,11 +3,19 @@ import {LiaVoteYeaSolid} from 'react-icons/lia'
 import {PiArrowsCounterClockwiseDuotone} from 'react-icons/pi'
 import {MdLanguage} from 'react-icons/md'
 import {Link} from 'react-router-dom'
+import { useState } from 'react'
 // import { useState } from 'react'
 
 const Cards = ({movies}) => {
 
-    // const [fav, setFav] = useState('')
+    const [fav, setFav] = useState(false)
+
+    const newColor = 'crimson';
+    const oldColor = 'gray'
+
+    const toggleFav = () => {
+        setFav(!fav)
+    }
 
   return (
     <div className='max-w-[1200px] mx-auto p-4'>
@@ -15,13 +23,15 @@ const Cards = ({movies}) => {
       {/* Grid */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
             {
-                movies.map(movie => (
-                    <Link to={`/details/${movie.id}`}>
+                movies.slice(0,10).map(movie => (
+                    
                         <div key={movie.id} data-testid='movie-card' className='cursor-pointer duration-300 hover:scale-110'>
                             <div className='relative'>
-                                <img data-testid='movie-poster' className='w-[100%] h-[370px] object-cover' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt='Poster'></img>
-                                    <div className='absolute top-2 right-2'>
-                                        <FaHeart onClick={() => 'bg-rose-700'} className='text-gray-300 bg-[#F3F4F6] rounded-full p-2 cursor-pointer duration-300 hover:scale-110' size={33}/>
+                                <Link to={`/details/${movie.id}`}>
+                                    <img data-testid='movie-poster' className='w-[100%] h-[370px] object-cover' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt='Poster'></img>
+                                </Link>
+                                    <div  className='absolute top-2 right-2'>
+                                        <FaHeart onClick={toggleFav} style={{ color: fav ? newColor : oldColor }} className='bg-[#F3F4F6] rounded-full p-2 cursor-pointer duration-75 hover:scale-110' size={33}/>
                                     </div>
                             </div>
                             <div>
@@ -48,7 +58,7 @@ const Cards = ({movies}) => {
                                     </p>
                             </div>
                         </div>
-                    </Link>
+                    
                 ))     
             }
         </div>
