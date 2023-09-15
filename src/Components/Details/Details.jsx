@@ -50,9 +50,9 @@ const Details = () => {
 
 
 
-    // const baseUrl = 'https://image.tmdb.org/t/p/w500'; 
+    const baseUrl = 'https://image.tmdb.org/t/p/w500'; 
 
-    // const imageUrl = `${baseUrl}${movieDetails.backdrop_path}`;
+    const imageUrl = `${baseUrl}${movieDetails.backdrop_path}`;
 
     return (
         <div>
@@ -69,15 +69,21 @@ const Details = () => {
                 ) : (
                     <div>
                         <div className='h-[80vh] pr-[3%]'>
-                            {/* <img preload="auto" className='md:w-[100vw] w-[100vw]  lg:w-[80vw] h-[440px] rounded-3xl object-cover' src={imageUrl || 'URL_TO_PLACEHOLDER_IMAGE'} alt={movieDetails.title}></img> */}
-                            <iframe
-                                className='md:w-[95vw] w-[95vw] lg:w-[80vw] h-[440px] rounded-3xl object-cover'
-                                src={`https://www.youtube.com/embed/${movieVideos.key}`}
-                                title={movieDetails.title}
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                            ></iframe>
+                            {/*  */}
+                            {
+                                movieDetails.key ? (
+                                        <iframe
+                                    className='md:w-[95vw] w-[95vw] lg:w-[80vw] h-[440px] rounded-3xl object-cover'
+                                    src={`https://www.youtube.com/embed/${movieVideos.key}`}
+                                    title={movieDetails.title}
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe>
+                                ):(
+                                    <img preload="auto" className='md:w-[100vw] w-[100vw]  lg:w-[80vw] h-[440px] rounded-3xl object-cover' src={imageUrl || 'URL_TO_PLACEHOLDER_IMAGE'} alt={movieDetails.title}></img>
+                                )
+                            }
+                            
                             
                                 
 
