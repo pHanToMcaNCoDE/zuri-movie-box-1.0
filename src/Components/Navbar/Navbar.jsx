@@ -42,11 +42,11 @@ const Navbar = () => {
             <img className='w-[100px] lg:w-[140px]' src={logo} alt='MovieBox'></img>
         </div>
 
-        <form  className='rounded-lg p-1 items-center border border-white hidden md:flex lg:flex md:w-[400px] lg:w-[500px]'>
+        <form  className='rounded-lg p-1 items-center border border-white flex mx-2 md:mx-0 lg:mx-0 w-[400px] lg:w-[500px]'>
             <input value={query} onChange={onChange} onSubmit={searchMovies} type={'text'} className='bg-transparent outline-none w-full text-white placeholder:text-white' placeholder='What do you want to watch?'></input>
             <button type={'submit'}><AiOutlineSearch className='text-white' size={25}/></button>
         </form>
-              <div className='max-h-[40vh] max-w-[35vw] lg:max-w-[35vw] md:max-w-[55vw] absolute top-[7%] left-[34%] lg:left-[34%] md:left-[24%] overflow-y-scroll '>
+              <div className='max-h-[40vh] left-[24%] max-w-[65vw] lg:max-w-[35vw] md:max-w-[55vw] absolute top-[7%] lg:left-[34%] md:left-[24%] overflow-y-scroll '>
           
                 {
                   result.map((movie) => (
@@ -62,7 +62,7 @@ const Navbar = () => {
             </div>
         
         <div className='flex justify-between items-center'>
-            <p className='text-white text-[.8rem] mr-5 cursor-pointer'>Sign in</p>
+            <p className='text-white text-[.8rem] hidden md:flex lg:flex mr-5 cursor-pointer'>Sign in</p>
             <img className='bg-rose-700 rounded-full p-1 cursor-pointer' src={menu} alt='Meun Bar'></img>
         </div>
 
