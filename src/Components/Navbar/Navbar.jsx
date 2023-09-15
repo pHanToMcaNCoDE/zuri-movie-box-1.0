@@ -4,6 +4,7 @@ import menu from '../../assets/menu.png'
 import {AiOutlineSearch} from 'react-icons/ai'
 import ResultSearch from '../ResultSearch/ResultSearch'
 import { Link } from 'react-router-dom'
+import { ScaleLoader } from 'react-spinners'
 
 const Navbar = () => {
 
@@ -45,22 +46,21 @@ const Navbar = () => {
             <input value={query} onChange={onChange} onSubmit={searchMovies} type={'text'} className='bg-transparent outline-none w-full text-white placeholder:text-white' placeholder='What do you want to watch?'></input>
             <button type={'submit'}><AiOutlineSearch className='text-white' size={25}/></button>
         </form>
-        <div className='max-h-[40vh] max-w-[35vw] lg:max-w-[35vw] md:max-w-[55vw] absolute top-[7%] left-[34%] lg:left-[34%] md:left-[24%] overflow-y-scroll '>
+              <div className='max-h-[40vh] max-w-[35vw] lg:max-w-[35vw] md:max-w-[55vw] absolute top-[7%] left-[34%] lg:left-[34%] md:left-[24%] overflow-y-scroll '>
           
-            {
-              result.map((movie) => (
-                <Link to={`/details/${movie.id}`}>
-                  <li key={movie.id} className='bg-white cursor-pointer p-2 rounded-lg m-2 list-none'>
-                      <ResultSearch movie={movie} />
-                  </li>
-                </Link>
-              ))
+                {
+                  result.map((movie) => (
+                    <Link to={`/details/${movie.id}`}>
+                      <li key={movie.id} className='bg-white cursor-pointer p-2 rounded-lg m-2 list-none'>
+                          <ResultSearch movie={movie} />
+                      </li>
+                    </Link>
+                  ))
+                  
+                }
               
-            }
-          
-        </div>
-
-
+            </div>
+        
         <div className='flex justify-between items-center'>
             <p className='text-white text-[.8rem] mr-5 cursor-pointer'>Sign in</p>
             <img className='bg-rose-700 rounded-full p-1 cursor-pointer' src={menu} alt='Meun Bar'></img>

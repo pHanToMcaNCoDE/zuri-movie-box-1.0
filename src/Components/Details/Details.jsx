@@ -87,20 +87,21 @@ const Details = () => {
                             
                                 
 
-                            <div className='flex flex-col md:flex-row lg:flex-row justify-between items-center px-2 pb-2 pt-5'>
+                            <div className='flex flex-col lg:flex-row justify-between items-center px-2 pb-2 pt-5'>
 
                                 <div className='flex flex-col md:flex-row text-center lg:text-justify lg:flex-row items-center'>
 
-                                    <h1 data-testid='movie-title' className='text-gray-900 text-[1.2rem] lg:text-[1.4rem] font-bold p-1'>{movieDetails.title}</h1>
+                                    <div className='flex flex-col lg:flex-row'>
+                                        <h1 data-testid='movie-title' className='text-gray-900 text-[1.2rem] lg:text-[1.4rem] font-bold p-1'>{movieDetails.title}</h1>
 
-                                    <span className='text-gray-900 p-1'><GoDotFill size={12}/></span>
+                                        <span className='hidden lg:flex text-gray-900 p-1'><GoDotFill size={12}/></span>
 
-                                    <h2 className='lg:text-[1.2rem] p-1'>{movieDetails.spoken_languages.map((items) => <span className='text-rose-800 p-1'>{items.iso_639_1}</span>)}</h2>
+                                        <h2 className='lg:text-[1.2rem] p-1'>{movieDetails.spoken_languages.map((items) => <span className='text-rose-800 p-1'>{items.iso_639_1}</span>)}</h2>
 
-                                    <span className='text-gray-900 p-1'><GoDotFill size={12}/></span>
+                                        <span className='hidden lg:flex text-gray-900 p-1'><GoDotFill size={12}/></span>
 
-                                    <p>{movieDetails.genres.map((items) => (<span className='border border-gray-300 text-rose-700 rounded-full py-0 px-3 m-2'>{items.name}</span>))}</p>
-
+                                        <p>{movieDetails.genres.map((items) => (<span className='border border-gray-300 text-rose-700 rounded-full py-0 px-3 m-2'>{items.name}</span>))}</p>
+                                    </div>
                                 </div>
                                 <div>
                                 <p className='flex items-center'><AiFillStar className='text-yellow-400 p-1' size={28}/><span className='text-gray-400 p-1'>{movieDetails.vote_average} </span> / 10.00</p> 
