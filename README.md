@@ -7,9 +7,19 @@
 
 <img width="1440" alt="Screenshot 2023-09-17 at 14 31 47" src="https://github.com/pHanToMcaNCoDE/zuri-movie-box-1.0/assets/113244998/c2d03624-c0b8-423e-ae21-af7674c5255d">
 <img width="1440" alt="Screenshot 2023-09-17 at 14 31 51" src="https://github.com/pHanToMcaNCoDE/zuri-movie-box-1.0/assets/113244998/12e1720f-cb97-43bd-9ab4-d9f66f9ea383">
+<img width="339" alt="Screenshot 2023-09-17 at 14 32 30" src="https://github.com/pHanToMcaNCoDE/zuri-movie-box-1.0/assets/113244998/a38bf98a-156d-4290-9eba-cff849a5a127">
+<img width="339" alt="Screenshot 2023-09-17 at 14 32 24" src="https://github.com/pHanToMcaNCoDE/zuri-movie-box-1.0/assets/113244998/aba17204-d89a-4bca-aee9-f7c5534b6be6">
+
+
+
 
    
 2. Movie Details: View the details of each movie.
+
+<img width="339" alt="Screenshot 2023-09-17 at 14 32 43" src="https://github.com/pHanToMcaNCoDE/zuri-movie-box-1.0/assets/113244998/4e7fc3e9-df48-4c2e-ba05-e02e48e4f241">
+<img width="1440" alt="Screenshot 2023-09-17 at 14 33 02" src="https://github.com/pHanToMcaNCoDE/zuri-movie-box-1.0/assets/113244998/692ff374-255f-4afd-9f83-5dac77351166">
+
+
 
    
 # API Integration:
