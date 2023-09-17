@@ -3,8 +3,14 @@
  
 # Requirements
 
-1. User Interface: A responsive and visually appealing user interface for the application. 
-2. Movie Details: View details of each movie.
+1. User Interface: A responsive and visually appealing user interface for the application.
+
+<img width="1440" alt="Screenshot 2023-09-17 at 14 31 47" src="https://github.com/pHanToMcaNCoDE/zuri-movie-box-1.0/assets/113244998/c2d03624-c0b8-423e-ae21-af7674c5255d">
+<img width="1440" alt="Screenshot 2023-09-17 at 14 31 51" src="https://github.com/pHanToMcaNCoDE/zuri-movie-box-1.0/assets/113244998/12e1720f-cb97-43bd-9ab4-d9f66f9ea383">
+
+   
+2. Movie Details: View the details of each movie.
+
    
 # API Integration:
 Consume the TMDB API to fetch movie data.
