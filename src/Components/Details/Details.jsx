@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react'
 import AsideBar from '../AsideBar/AsideBar'
 import {GoDotFill} from 'react-icons/go'
@@ -15,7 +17,7 @@ const Details = () => {
     const params = useParams();
     const [loading, setLoading] = useState(true); 
     const [movieDetails, setMovieDetails] = useState({});
-    const [movieVideos, setMovieVideos] = useState(null);
+    const [movieVideos, setMovieVideos] = useState({});
 
     const fetchMovieDetails = async () => {
         try {
@@ -39,8 +41,10 @@ const Details = () => {
         }
     }
 
-    console.log(movieDetails)
-    // console.log(movieVideos)
+    // console.log(movieDetails)
+    console.log(movieVideos)
+
+
   
 
     useEffect(() => {
@@ -48,7 +52,9 @@ const Details = () => {
         fetchMovieTrailers();
     }, [params.id]);
 
-
+    const trailer = movieVideos.results && movieVideos.results.length > 0 ? movieVideos.results[0] : null;
+    
+    const videoSrc = trailer ? `https://www.youtube.com/embed/${trailer.key}` : '';
 
     const baseUrl = 'https://image.tmdb.org/t/p/w500'; 
 
@@ -69,20 +75,27 @@ const Details = () => {
                 ) : (
                     <div>
                         <div className='h-[80vh] pr-[3%]'>
-                            {/*  */}
+
                             {
-                                movieDetails.key ? (
-                                        <iframe
-                                    className='md:w-[95vw] w-[95vw] lg:w-[80vw] h-[440px] rounded-3xl object-cover'
-                                    src={`https://www.youtube.com/embed/${movieVideos.key}`}
-                                    title={movieDetails.title}
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen></iframe>
-                                ):(
-                                    <img preload="auto" className='md:w-[100vw] w-[100vw]  lg:w-[80vw] h-[440px] rounded-3xl object-cover' src={imageUrl || 'URL_TO_PLACEHOLDER_IMAGE'} alt={movieDetails.title}></img>
+                                trailer ? (
+                                    <iframe
+                                        className='md:w-[95vw] w-[95vw] lg:w-[80vw] h-[440px] rounded-3xl object-cover'
+                                        src={videoSrc}
+                                        title={movieDetails.title}
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                ) : (
+                                    <img
+                                        preload="auto"
+                                        className='md:w-[100vw] w-[100vw] lg:w-[80vw] h-[440px] rounded-3xl object-cover'
+                                        src={imageUrl || 'URL_TO_PLACEHOLDER_IMAGE'}
+                                        alt={movieDetails.title}
+                                    />
                                 )
                             }
+
                             
                             
                                 
